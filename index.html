@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Big Pine International School</title>
+  <meta name="description" content="Big Pine International School — Wisdom and Virtue. Admissions, academics, news, and contact." />
+
+  <!-- Pine-tree favicon (fixes the ash “S” icon) -->
+  <link rel="icon"
+        href='data:image/svg+xml;utf8,
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+          <rect width="64" height="64" rx="14" fill="%230A1410"/>
+          <path d="M30 42h4v14h-4z" fill="%23DFFFEA"/>
+          <path d="M32 8c7 7 11 13 12.5 18.2.6 2-1 3.8-3.1 3.8H22.6c-2.1 0-3.7-1.8-3.1-3.8C21 21 25 15 32 8Z" fill="%2322C55E"/>
+          <path d="M32 20c9 7 14.2 13 16 17.8.7 2-1 4.2-3.2 4.2H19.2c-2.2 0-3.9-2.2-3.2-4.2C17.8 33 23 27 32 20Z" fill="%2316A34A"/>
+          <path d="M32 30c11 7.5 17 14 19 20 .8 2.2-1 4.5-3.4 4.5H16.4c-2.4 0-4.2-2.3-3.4-4.5 2-6 8-12.5 19-20Z" fill="%2386EFAC"/>
+        </svg>' />
+
+  <style>
+    :root{
+      /* DARK GREEN THEME */
+      --bg:#07110C;
+      --panel:#0B1A12;
+      --panel2:#09160F;
+      --text:#E8FFF0;
+      --muted:#BFE7CC;
+      --line: rgba(255,255,255,.12);
+
+      --green:#22C55E;
+      --green2:#86EFAC;
+      --deep:#0F7A3A;
+
+      --shadow: 0 18px 55px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:26px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans";
+      color:var(--text);
+      background:
+        radial-gradient(1100px 720px at 12% 0%, rgba(34,197,94,.18), transparent 58%),
+        radial-gradient(900px 650px at 90% 8%, rgba(134,239,172,.10), transparent 62%),
+        radial-gradient(900px 720px at 70% 110%, rgba(34,197,94,.08), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+
+    /* Topbar */
+    .topbar{
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(11,26,18,.82), rgba(11,26,18,.55));
+      backdrop-filter: blur(10px);
+    }
+    .topbar .wrap{
+      display:flex; gap:14px; align-items:center; justify-content:space-between;
+      padding:10px 0;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:650;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,.14);
+      padding:7px 10px;
+      border-radius:999px;
+      background: rgba(9,22,15,.55);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      white-space:nowrap;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      background: linear-gradient(180deg, var(--green), var(--deep));
+      box-shadow: 0 0 0 4px rgba(34,197,94,.14);
+    }
+    .topbar strong{color:var(--text); font-weight:800}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(7,17,12,.62);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 290px}
+
+    /* Pine logo in title area */
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background: linear-gradient(135deg, rgba(34,197,94,.22), rgba(134,239,172,.12));
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 18px 45px rgba(34,197,94,.12);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-60%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.18), transparent 55%);
+      transform: rotate(18deg);
+    }
+    .logo svg{position:relative}
+
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.7px;
+      text-transform:uppercase;
+      font-weight:900;
+      line-height:1.1;
+    }
+    .brand p{
+      margin:4px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:750;
+      letter-spacing:.35px;
+    }
+
+    nav ul{list-style:none;padding:0;margin:0;display:flex;gap:10px;align-items:center}
+    nav a{
+      font-size:14px;
+      font-weight:800;
+      color:rgba(232,255,240,.85);
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition:.18s ease;
+    }
+    nav a:hover{
+      background: rgba(34,197,94,.10);
+      border-color: rgba(255,255,255,.14);
+    }
+
+    .actions{display:flex;gap:10px;align-items:center;min-width:260px;justify-content:flex-end}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(11,26,18,.55);
+      color:var(--text);
+      font-weight:900;
+      font-size:14px;
+      cursor:pointer;
+      transition:.18s ease;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(34,197,94,.95), rgba(134,239,172,.70));
+      border-color: rgba(255,255,255,.16);
+      color:#04140B;
+    }
+    .btn.ghost{background:transparent;box-shadow:none;border-color:transparent}
+
+    /* Mobile nav */
+    .menu-btn{display:none}
+    .mobile{display:none;border-top:1px solid rgba(255,255,255,.10);padding:10px 0 14px}
+    .mobile .row{display:grid;gap:8px}
+    .mobile a{
+      display:block;
+      padding:12px 12px;
+      border-radius:14px;
+      color:rgba(232,255,240,.90);
+      border:1px solid transparent;
+      font-weight:900;
+    }
+    .mobile a:hover{border-color: rgba(255,255,255,.14); background: rgba(34,197,94,.10)}
+
+    /* Cards */
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(11,26,18,.70), rgba(9,22,15,.55));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .card .inner{padding:22px}
+    .glow{
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(720px 260px at 15% 0%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(560px 240px at 90% 10%, rgba(134,239,172,.10), transparent 55%);
+      pointer-events:none;
+    }
+
+    /* Hero */
+    .hero{padding:42px 0 18px}
+    .hero-grid{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px;align-items:stretch}
+    .hero h2{margin:0;font-size:40px;line-height:1.08;letter-spacing:-.02em}
+    .hero p.lead{
+      margin:12px 0 0;
+      color:rgba(191,231,204,.95);
+      font-size:16px;
+      line-height:1.55;
+      font-weight:650;
+      max-width: 60ch;
+    }
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;align-items:center}
+
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+    .stat{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(9,22,15,.45);
+      border-radius: 18px;
+      padding:12px;
+    }
+    .stat b{display:block;font-size:18px}
+    .stat span{display:block;margin-top:4px;font-size:12px;color:rgba(191,231,204,.95);font-weight:750}
+
+    /* Right hero pine tree */
+    .hero-side{position:relative}
+    .pine-hero{
+      position:absolute;
+      right:-12px;
+      top:12px;
+      width:180px;
+      height:auto;
+      opacity:.95;
+      pointer-events:none;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,.35));
+    }
+
+    .badge{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:14px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(9,22,15,.45);
+      margin-bottom:10px;
+      position:relative;z-index:1;
+    }
+    .badge .ic{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      background: rgba(34,197,94,.14);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .badge h3{margin:0;font-size:14px}
+    .badge p{margin:6px 0 0;color:rgba(191,231,204,.95);font-size:13px;line-height:1.45;font-weight:650}
+
+    .quick-form{
+      margin-top:10px;padding:14px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(11,26,18,.45);
+      position:relative;z-index:1;
+    }
+    .quick-form label{
+      display:block;font-size:12px;
+      color:rgba(191,231,204,.95);
+      margin:8px 0 6px;
+      font-weight:900;
+    }
+    .quick-form input,.quick-form select,.quick-form textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(7,17,12,.65);
+      color:var(--text);
+      outline:none;
+      font-weight:650;
+    }
+    .quick-form textarea{min-height:88px;resize:vertical}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+    section{padding:18px 0}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:10px}
+    .section-title h3{margin:0;font-size:20px}
+    .section-title p{margin:0;color:rgba(191,231,204,.95);font-size:13px;max-width:70ch;font-weight:650}
+
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .mini{
+      padding:16px;border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(9,22,15,.45);
+      position:relative; overflow:hidden;
+    }
+    .mini:before{
+      content:""; position:absolute; inset:-1px;
+      background: radial-gradient(420px 140px at 20% 0%, rgba(34,197,94,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .mini h4{margin:0 0 8px;font-size:15px}
+    .mini p{margin:0;color:rgba(191,231,204,.95);font-size:13px;line-height:1.5;font-weight:650}
+    .mini a.link{display:inline-flex;gap:8px;align-items:center;margin-top:10px;font-size:13px;font-weight:900}
+    .mini a.link:hover{text-decoration:underline}
+
+    .news{display:grid;grid-template-columns:1.3fr .7fr;gap:12px}
+    .news .list{display:grid;gap:10px}
+    .post{padding:14px;border-radius: var(--radius);border:1px solid rgba(255,255,255,.12);background: rgba(11,26,18,.45)}
+    .post .meta{display:flex;gap:10px;flex-wrap:wrap;color:rgba(191,231,204,.90);font-size:12px;font-weight:900}
+    .post h4{margin:8px 0 6px;font-size:15px}
+    .post p{margin:0;color:rgba(191,231,204,.95);font-size:13px;line-height:1.5;font-weight:650}
+
+    .aside{padding:16px;border-radius: var(--radius);border:1px solid rgba(255,255,255,.12);background: rgba(9,22,15,.45)}
+    .aside h4{margin:0 0 10px}
+    .aside ul{margin:0;padding-left:16px;color:rgba(191,231,204,.95);font-size:13px;line-height:1.7;font-weight:750}
+
+    footer{margin-top:18px;border-top:1px solid rgba(255,255,255,.10);background: rgba(7,17,12,.55)}
+    .footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:12px;padding:20px 0}
+    footer h5{margin:0 0 10px}
+    footer p, footer a{color:rgba(191,231,204,.95);font-size:13px;line-height:1.6;font-weight:650}
+    footer a:hover{color:var(--text);text-decoration:underline}
+    .copyright{padding:12px 0 18px;color:rgba(191,231,204,.75);font-size:12px;font-weight:750}
+
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .news{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      nav{display:none}
+      .menu-btn{display:inline-flex}
+      .mobile{display:block}
+      .pine-hero{display:none}
+    }
+    @media (max-width:520px){
+      .two{grid-template-columns:1fr}
+      .hero h2{font-size:32px}
+      .footer-grid{grid-template-columns:1fr}
+    }
+
+    .reveal{opacity:0;transform: translateY(10px);transition:.6s ease}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="wrap">
+        <div class="pill"><span class="dot"></span> Admissions open for <strong>2026</strong> — Entrance/Interview dates available</div>
+        <div class="pill">📍 <span>Address: <strong>No 3 Brendan Street, Port Harcourt</strong></span></div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#home" aria-label="Big Pine International School Home">
+          <div class="logo" aria-hidden="true">
+            <!-- Small pine tree logo -->
+            <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+              <path d="M30 44h4v12h-4z" fill="rgba(232,255,240,.85)"/>
+              <path d="M32 6c7 7 11 13 12.5 18.2.6 2-1 3.8-3.1 3.8H22.6c-2.1 0-3.7-1.8-3.1-3.8C21 19 25 13 32 6Z" fill="rgba(34,197,94,.95)"/>
+              <path d="M32 18c9 7 14.2 13 16 17.8.7 2-1 4.2-3.2 4.2H19.2c-2.2 0-3.9-2.2-3.2-4.2C17.8 31 23 25 32 18Z" fill="rgba(34,197,94,.82)"/>
+              <path d="M32 28c11 7.5 17 14 19 20 .8 2.2-1 4.5-3.4 4.5H16.4c-2.4 0-4.2-2.3-3.4-4.5 2-6 8-12.5 19-20Z" fill="rgba(134,239,172,.85)"/>
+              <path d="M26 22c1.6-4 4-7.5 6-10" stroke="rgba(255,255,255,.55)" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h1>Big Pine International School</h1>
+            <p>Wisdom &amp; Virtue • Learning that lasts</p>
+          </div>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="actions">
+          <a class="btn ghost" href="#contact">Call</a>
+          <a class="btn primary" href="#admissions">Apply Now</a>
+          <button class="btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+        </div>
+      </div>
+
+      <div class="mobile" id="mobileMenu" hidden>
+        <div class="row">
+          <a href="#about">About</a>
+          <a href="#academics">Academics</a>
+          <a href="#admissions">Admissions</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="card reveal">
+          <div class="glow"></div>
+          <div class="inner">
+            <div class="pill" style="display:inline-flex; margin-bottom:10px;">
+              🌲 <strong>Big Pine</strong> • Where character meets excellence
+            </div>
+
+            <h2>Build strong minds.<br/>Grow strong character.</h2>
+            <p class="lead">
+              Big Pine International School blends strong academics with values-driven education.
+              We focus on mastery, confidence, creativity, and community.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn primary" href="#admissions">Get Admissions Info</a>
+              <a class="btn" href="#academics">Explore Academics</a>
+              <a class="btn ghost" href="#contact">Book a Visit</a>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><b>Small classes</b><span>More attention per child</span></div>
+              <div class="stat"><b>Strong values</b><span>Wisdom &amp; Virtue</span></div>
+              <div class="stat"><b>Modern learning</b><span>STEM + creativity</span></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card hero-side reveal">
+          <div class="glow"></div>
+
+          <!-- Big pine tree on the right side -->
+          <svg class="pine-hero" viewBox="0 0 260 420" fill="none" aria-hidden="true">
+            <path d="M124 316h12v82h-12z" fill="rgba(232,255,240,.45)"/>
+            <path d="M130 14c30 32 49 60 57 86 3 10-5 20-16 20H89c-11 0-19-10-16-20 8-26 27-54 57-86Z" fill="rgba(34,197,94,.35)"/>
+            <path d="M130 92c44 36 70 66 80 95 4 12-6 24-19 24H79c-13 0-23-12-19-24 10-29 36-59 70-95Z" fill="rgba(34,197,94,.24)"/>
+            <path d="M130 170c58 40 92 78 104 120 5 15-7 30-23 30H49c-16 0-28-15-23-30 12-42 46-80 104-120Z" fill="rgba(134,239,172,.26)"/>
+            <path d="M98 116c10-22 22-42 32-55" stroke="rgba(255,255,255,.35)" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+
+          <div class="inner">
+            <div class="badge">
+              <div class="ic" aria-hidden="true">🏫</div>
+              <div>
+                <h3>Visit the campus</h3>
+                <p>Take a tour, meet teachers, and see learning in action.</p>
+              </div>
+            </div>
+
+            <div class="badge">
+              <div class="ic" aria-hidden="true">📘</div>
+              <div>
+                <h3>Clear learning plan</h3>
+                <p>Structured curriculum + continuous assessment.</p>
+              </div>
+            </div>
+
+            <form class="quick-form" id="interestForm">
+              <h3 style="margin:0 0 6px; font-size:15px;">Request a callback</h3>
+              <p style="margin:0 0 10px; color:rgba(191,231,204,.9); font-size:12px; font-weight:650;">
+                (Demo form — edit to connect WhatsApp/email.)
+              </p>
+
+              <div class="two">
+                <div>
+                  <label for="parentName">Name</label>
+                  <input id="parentName" name="parentName" placeholder="Parent/Guardian name" required />
+                </div>
+                <div>
+                  <label for="phone">Phone</label>
+                  <input id="phone" name="phone" placeholder="+234..." required />
+                </div>
+              </div>
+
+              <label for="level">Class/Level</label>
+              <select id="level" name="level">
+                <option>Creche / Nursery</option>
+                <option>Primary</option>
+                <option>Junior Secondary</option>
+                <option>Senior Secondary</option>
+              </select>
+
+              <label for="msg">Message</label>
+              <textarea id="msg" name="msg" placeholder="Ask about fees, entry date, requirements..."></textarea>
+
+              <button class="btn primary" type="submit" style="width:100%; margin-top:10px;">Send Request</button>
+            </form>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h3>About Big Pine</h3>
+          <p>We’re committed to raising confident learners with strong character, literacy & numeracy, and real-world skills.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="mini reveal">
+          <h4>Mission</h4>
+          <p>To develop knowledgeable, disciplined students prepared for life—academically, socially, and morally.</p>
+          <a class="link" href="#contact">Meet us →</a>
+        </div>
+        <div class="mini reveal">
+          <h4>Vision</h4>
+          <p>To be a model international school known for excellence, creativity, and values-driven leadership.</p>
+          <a class="link" href="#academics">Our approach →</a>
+        </div>
+        <div class="mini reveal">
+          <h4>Motto</h4>
+          <p><b>Wisdom and Virtue</b> — smart minds with good hearts.</p>
+          <a class="link" href="#admissions">Enroll →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="academics">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h3>Academics</h3>
+          <p>Balanced learning: literacy + numeracy, STEM, creative arts, sports, and life skills.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="mini reveal"><h4>Early Years</h4><p>Play-based learning, phonics, writing readiness, and number sense.</p></div>
+        <div class="mini reveal"><h4>Primary School</h4><p>Reading fluency, math mastery, science curiosity, and strong values.</p></div>
+        <div class="mini reveal"><h4>Secondary School</h4><p>STEM projects, leadership, research skills, and exam readiness.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="admissions">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h3>Admissions</h3>
+          <p>Inquiry → Assessment → Enrollment. Simple and clear.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="mini reveal"><h4>1) Inquiry</h4><p>Call/WhatsApp or visit to get admissions info and fees.</p></div>
+        <div class="mini reveal"><h4>2) Assessment</h4><p>Entrance test/interview (age-appropriate).</p></div>
+        <div class="mini reveal"><h4>3) Enrollment</h4><p>Submit documents, pay fees, receive resumption information.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h3>News &amp; Events</h3>
+          <p>Replace these sample posts with your real announcements.</p>
+        </div>
+      </div>
+
+      <div class="news">
+        <div class="list">
+          <article class="post reveal">
+            <div class="meta"><span>📅 Jan 2026</span><span>•</span><span>Academics</span></div>
+            <h4>Mid-term assessments will soon begin</h4>
+            <p>Timetable will be shared via class teachers and the school’s WhatsApp channel.</p>
+          </article>
+        </div>
+
+        <aside class="aside reveal">
+          <h4>Quick links</h4>
+          <ul>
+            <li><a href="#admissions">Admissions process</a></li>
+            <li><a href="#academics">Curriculum overview</a></li>
+            <li><a href="#contact">Visit / contact</a></li>
+            <li><a href="#home">Back to top</a></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-title reveal">
+        <div>
+          <h3>Contact</h3>
+          <p>We’re located at <b>No 3 Brendan Street, Port Harcourt</b>.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="mini reveal">
+          <h4>Phone</h4>
+          <p><b>+2348037415071</b><br/>Mon–Fri • 8:00am–4:00pm</p>
+          <a class="link" href="#" id="callLink">Call now →</a>
+        </div>
+        <div class="mini reveal">
+          <h4>WhatsApp</h4>
+          <p>Fastest response for admissions questions and visit scheduling.</p>
+          <a class="link" href="#" id="waLink">Chat on WhatsApp →</a>
+        </div>
+        <div class="mini reveal">
+          <h4>Address</h4>
+          <p>No 3 Brendan Street, Port Harcourt</p>
+          <a class="link" href="#home">Directions →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h5>Big Pine International School</h5>
+          <p>Values-driven learning with a strong academic foundation.</p>
+          <div class="pill" style="display:inline-flex; margin-top:10px;">
+            🌲 Motto: <strong>Wisdom &amp; Virtue</strong>
+          </div>
+        </div>
+
+        <div>
+          <h5>School</h5>
+          <p><a href="#about">About</a><br/><a href="#academics">Academics</a><br/><a href="#news">News</a></p>
+        </div>
+
+        <div>
+          <h5>Admissions</h5>
+          <p><a href="#admissions">Process</a><br/><a href="#contact">Visit</a><br/><a href="#contact">Contact</a></p>
+        </div>
+
+        <div>
+          <h5>Contact</h5>
+          <p>
+            Phone: +234 8037415071/081257675544<br/>
+            Email: tessibose@gmail.com<br/>
+            Address: No 3 Brendan Street, Port Harcourt
+          </p>
+        </div>
+      </div>
+
+      <div class="copyright">© <span id="year"></span> Big Pine International School. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // QUICK EDIT AREA
+    const WHATSAPP_NUMBER_HERE = "2348037415071"; // no +, no spaces
+    const CALL_NUMBER_HERE = "+2348037415071";
+    
+
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuBtn?.addEventListener("click", () => {
+      const isOpen = menuBtn.getAttribute("aria-expanded") === "true";
+      menuBtn.setAttribute("aria-expanded", String(!isOpen));
+      mobileMenu.hidden = isOpen;
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href");
+        if (!href || href === "#") return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        if (window.innerWidth <= 980 && mobileMenu && !mobileMenu.hidden) {
+          mobileMenu.hidden = true;
+          menuBtn?.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    // WhatsApp & Call links
+    const waLink = document.getElementById("waLink");
+    const callLink = document.getElementById("callLink");
+    const waURL = (text) => `https://wa.me/${WHATSAPP_NUMBER_HERE}?text=${encodeURIComponent(text)}`;
+    if (waLink) waLink.href = waURL("Hello Big Pine International School, I want to inquire about admissions.");
+    if (callLink) callLink.href = `tel:${CALL_NUMBER_HERE}`;
+
+    // Form -> WhatsApp
+    document.getElementById("interestForm")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("parentName").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const level = document.getElementById("level").value;
+      const msg = document.getElementById("msg").value.trim();
+
+      const text =
+        `Hello Big Pine International School,\n` +
+        `Name: ${name}\nPhone: ${phone}\nClass/Level: ${level}\n` +
+        `Message: ${msg || "I want admissions information."}`;
+
+      window.open(waURL(text), "_blank", "noopener,noreferrer");
+    });
+
+    // Reveal
+    const els = Array.from(document.querySelectorAll(".reveal"));
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(ent => { if (ent.isIntersecting) ent.target.classList.add("show"); });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
